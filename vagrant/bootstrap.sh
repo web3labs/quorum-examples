@@ -6,7 +6,6 @@ add-apt-repository ppa:ethereum/ethereum
 apt-get update
 apt-get install -y build-essential unzip libdb-dev libleveldb-dev libsodium-dev zlib1g-dev libtinfo-dev solc sysvbanner wrk
 
->>>>>>> ee21fdb101bf82144f11d599efbfda0c3ec30c97
 # install golang
 GOREL=go1.9.3.linux-amd64.tar.gz
 wget -q https://dl.google.com/go/$GOREL
