@@ -3,8 +3,8 @@ set -u
 set -e
 
 mkdir -p qdata/logs
-echo "[*] Starting Constellation nodes"
-./constellation-start.sh
+echo "[*] Starting Crux nodes"
+./crux-start.sh
 
 echo "[*] Starting Ethereum nodes"
 set -v
