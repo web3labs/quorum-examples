@@ -16,9 +16,9 @@ PATH=$PATH:/usr/local/go/bin
 echo 'PATH=$PATH:/usr/local/go/bin' >> /home/vagrant/.bashrc
 
 # make/install quorum
-git clone https://github.com/jpmorganchase/quorum.git
+git clone https://github.com/consensys/quorum.git
 pushd quorum >/dev/null
-git checkout tags/v2.0.1-pre
+git checkout b30fde5f3dbab0c260ba49259e9f061f2f6a744f
 make all
 cp build/bin/geth /usr/local/bin
 cp build/bin/bootnode /usr/local/bin
@@ -27,6 +27,7 @@ popd >/dev/null
 # make/install crux
 git clone https://github.com/blk-io/crux.git
 cd crux
+git checkout c9bc8aac92578de0b8ee48668bf312167285f91a
 make setup && make
 cp bin/crux /usr/local/bin
 
