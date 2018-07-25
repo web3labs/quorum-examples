@@ -27,7 +27,7 @@ popd >/dev/null
 # make/install crux
 git clone https://github.com/blk-io/crux.git
 cd crux
-git checkout c9bc8aac92578de0b8ee48668bf312167285f91a
+git checkout tags/v1.0.0
 make setup && make
 cp bin/crux /usr/local/bin
 
