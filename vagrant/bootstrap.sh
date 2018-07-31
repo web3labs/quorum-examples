@@ -18,7 +18,7 @@ echo 'PATH=$PATH:/usr/local/go/bin' >> /home/vagrant/.bashrc
 # make/install quorum
 git clone https://github.com/consensys/quorum.git
 pushd quorum >/dev/null
-git checkout b30fde5f3dbab0c260ba49259e9f061f2f6a744f
+git checkout tags/v2.0.0-grpc
 make all
 cp build/bin/geth /usr/local/bin
 cp build/bin/bootnode /usr/local/bin
