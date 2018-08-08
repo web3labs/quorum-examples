@@ -12,7 +12,6 @@ RUN \
   cd / && rm -rf solidity                                                                                   && \
   rm -rf /var/cache/apk/*
 
-
 ENV PORT=""
 ENV NODE_KEY=""
 ENV CRUX_PUB=""
@@ -23,9 +22,6 @@ ENV OTHER_NODES=""
 ENV GETH_RPC_PORT=""
 ENV GETH_PORT=""
 
-
-ADD scripts bin
-
 WORKDIR /quorum
 
 COPY bootstrap.sh bootstrap.sh
@@ -34,16 +30,17 @@ COPY passwords.txt passwords.txt
 COPY istanbul-init.sh istanbul-init.sh
 COPY crux-start.sh crux-start.sh
 COPY istanbul-start.sh istanbul-start.sh
-
 COPY start.sh start.sh
-# Entrypoint for container
+COPY scripts/simpleContract.js simpleContract.js
+COPY scripts/test_transaction.sh test_transaction.sh
 
 RUN chmod +x start.sh crux-start.sh istanbul-start.sh istanbul-init.sh && \
-    chmod +x ../bin/test_transaction.sh && \
+    chmod +x test_transaction.sh && \
     chmod +x bootstrap.sh && \
     ./bootstrap.sh && \
     apk del sed make git cmake build-base gcc g++ musl-dev curl-dev boost-dev
 
+EXPOSE 9000 21000 22000
 
-EXPOSE 21000 22000
+# Entrypoint for container
 ENTRYPOINT ["./start.sh"]

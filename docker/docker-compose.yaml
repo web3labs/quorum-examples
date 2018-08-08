@@ -1,5 +1,6 @@
 version: "3.4"
 services:
+
   node1: &quorum_crux_node
     image: blk.io/quorum/quorum-crux
     build:
@@ -8,7 +9,7 @@ services:
     ports:
       - 22001:22000
       - 21001:21000
-      - 9001:9001
+      - 9001:9000
     restart: always
     networks:
       quorum_net:
@@ -18,11 +19,11 @@ services:
       - NODE_KEY=633b2ef3ed5306f05a532eb44eb84858aca470d4fde039c1c988088e48070e64
       - CRUX_PUB=BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=
       - CRUX_PRIV={"data":{"bytes":"Wl+xSyXVuuqzpvznOS7dOobhcn4C5auxkFRi7yLtgtA="},"type":"unlocked"}
-      - PORT=9001
+      - PORT=9000
       - OWN_URL=node1
       - GETH_PORT=21000
       - GETH_RPC_PORT=22000
-      - OTHER_NODES=http://node2:9002/
+      - OTHER_NODES=http://node2:9000/
       - PERMISSIONED_NODES=["enode://5c3c98e3a28a87e73ab40468212de7ab6cf0e2afa77781295925f32369c00baf30f664e52f8d152c02b069d6daa1a61f477e3c1eca64403529dfbd0c31e09524@10.5.0.11:21000?discport=0","enode://9b98a96a8ba080ff4c7863e5fdf3211a7082b612d5897ae4eed687eec391eb421c8ed7c572ca17f257441a0cb544a7c184244dfdf9a114f5251da3dac72e7585@10.5.0.12:21000?discport=0","enode://a51690b44ab39fd83c42b5a7c087ba222970951f06655ebbba1625267fad105fd238c9f092e05b2293f526e748b2fa423b22d66296f770037393c26a9e5d3543@10.5.0.13:21000?discport=0","enode://a68df7cd75e9ea490653bdba7c6868f979944578e59c9efd2aa62878822f16f46a49a13289f6392923053be1acb3a6ec8e2fc92cae59de859fd5892071fbfa88@10.5.0.14:21000?discport=0"]
 
   node2:
@@ -31,7 +32,7 @@ services:
     ports:
       - 22002:22000
       - 21002:21000
-      - 9002:9002
+      - 9002:9000
     networks:
       quorum_net:
         ipv4_address: 10.5.0.12
@@ -40,20 +41,19 @@ services:
       - NODE_KEY=d5b8dfced693dbb7bf858dce40e3b2a0373696ac88ccf5e1c0052e26b7d77e49
       - CRUX_PUB=QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc=
       - CRUX_PRIV={"data":{"bytes":"nDFwJNHSiT1gNzKBy9WJvMhmYRkW3TzFUmPsNzR6oFk="},"type":"unlocked"}
-      - PORT=9002
+      - PORT=9000
       - OWN_URL=node2
       - GETH_PORT=21000
       - GETH_RPC_PORT=22000
-      - OTHER_NODES=http://node3:9003/
+      - OTHER_NODES=http://node3:9000/
       - PERMISSIONED_NODES=["enode://5c3c98e3a28a87e73ab40468212de7ab6cf0e2afa77781295925f32369c00baf30f664e52f8d152c02b069d6daa1a61f477e3c1eca64403529dfbd0c31e09524@10.5.0.11:21000?discport=0","enode://9b98a96a8ba080ff4c7863e5fdf3211a7082b612d5897ae4eed687eec391eb421c8ed7c572ca17f257441a0cb544a7c184244dfdf9a114f5251da3dac72e7585@10.5.0.12:21000?discport=0","enode://a51690b44ab39fd83c42b5a7c087ba222970951f06655ebbba1625267fad105fd238c9f092e05b2293f526e748b2fa423b22d66296f770037393c26a9e5d3543@10.5.0.13:21000?discport=0","enode://a68df7cd75e9ea490653bdba7c6868f979944578e59c9efd2aa62878822f16f46a49a13289f6392923053be1acb3a6ec8e2fc92cae59de859fd5892071fbfa88@10.5.0.14:21000?discport=0"]
-
 
   node3:
     <<: *quorum_crux_node
     container_name: quorum3
     ports:
       - 22003:22000
-      - 9003:9003
+      - 9003:9000
       - 21003:21000
     networks:
       quorum_net:
@@ -63,11 +63,11 @@ services:
       - NODE_KEY=45d87820ad7792f86592a8e3494c3e78b4755a480cfad1799d6c3f28c3f0d87c
       - CRUX_PUB=1iTZde/ndBHvzhcl7V68x44Vx7pl8nwx9LqnM/AfJUg=
       - CRUX_PRIV={"data":{"bytes":"tMxUVR8bX7aq/TbpVHc2QV3SN2iUuExBwefAuFsO0Lg="},"type":"unlocked"}
-      - PORT=9003
+      - PORT=9000
       - OWN_URL=node3
       - GETH_PORT=21000
       - GETH_RPC_PORT=22000
-      - OTHER_NODES=http://node4:9004/
+      - OTHER_NODES=http://node4:9000/
       - PERMISSIONED_NODES=["enode://5c3c98e3a28a87e73ab40468212de7ab6cf0e2afa77781295925f32369c00baf30f664e52f8d152c02b069d6daa1a61f477e3c1eca64403529dfbd0c31e09524@10.5.0.11:21000?discport=0","enode://9b98a96a8ba080ff4c7863e5fdf3211a7082b612d5897ae4eed687eec391eb421c8ed7c572ca17f257441a0cb544a7c184244dfdf9a114f5251da3dac72e7585@10.5.0.12:21000?discport=0","enode://a51690b44ab39fd83c42b5a7c087ba222970951f06655ebbba1625267fad105fd238c9f092e05b2293f526e748b2fa423b22d66296f770037393c26a9e5d3543@10.5.0.13:21000?discport=0","enode://a68df7cd75e9ea490653bdba7c6868f979944578e59c9efd2aa62878822f16f46a49a13289f6392923053be1acb3a6ec8e2fc92cae59de859fd5892071fbfa88@10.5.0.14:21000?discport=0"]
 
   node4:
@@ -75,7 +75,7 @@ services:
     container_name: quorum4
     ports:
       - 22004:22000
-      - 9004:9004
+      - 9004:9000
       - 21004:21000
     networks:
       quorum_net:
@@ -85,13 +85,12 @@ services:
       - NODE_KEY=daa89d4ae250d24b33847343d0cc0116c48331b81e28514522bb7f77f2be5676
       - CRUX_PUB=oNspPPgszVUFw0qmGFfWwh1uxVUXgvBxleXORHj07g8=
       - CRUX_PRIV={"data":{"bytes":"grQjd3dBp4qFs8/5Jdq7xjz++aUx/LXAqISFyPWaCRw="},"type":"unlocked"}
-      - PORT=9004
+      - PORT=9000
       - OWN_URL=node4
       - GETH_PORT=21000
       - GETH_RPC_PORT=22000
-      - OTHER_NODES=http://node1:9001/
+      - OTHER_NODES=http://node1:9000/
       - PERMISSIONED_NODES=["enode://5c3c98e3a28a87e73ab40468212de7ab6cf0e2afa77781295925f32369c00baf30f664e52f8d152c02b069d6daa1a61f477e3c1eca64403529dfbd0c31e09524@10.5.0.11:21000?discport=0","enode://9b98a96a8ba080ff4c7863e5fdf3211a7082b612d5897ae4eed687eec391eb421c8ed7c572ca17f257441a0cb544a7c184244dfdf9a114f5251da3dac72e7585@10.5.0.12:21000?discport=0","enode://a51690b44ab39fd83c42b5a7c087ba222970951f06655ebbba1625267fad105fd238c9f092e05b2293f526e748b2fa423b22d66296f770037393c26a9e5d3543@10.5.0.13:21000?discport=0","enode://a68df7cd75e9ea490653bdba7c6868f979944578e59c9efd2aa62878822f16f46a49a13289f6392923053be1acb3a6ec8e2fc92cae59de859fd5892071fbfa88@10.5.0.14:21000?discport=0"]
-
 
 networks:
   quorum_net:
